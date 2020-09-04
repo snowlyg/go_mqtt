@@ -1,9 +1,6 @@
 ### 配置文件
 
-```json
-{"qos":2,"clientid":"7d7c43db-d061-42cf-9e9f-5c9e36b1dd34","broker":"tcp://10.0.0.27:1883","user_name":"Chindeo","password":"P@ssw0rd","num":50}
-```
-
+##### 配置文件字段 config.yml
 ```yaml
 qos: 2 
 clientid: '7d7c43db-d061-42cf-9e9f-5c9e36b1dd34' 
@@ -17,7 +14,9 @@ num: 50
 
 ```shell script
 cd udp & go run main.go
+
 #输入 json 修改配置
+{"qos":2,"clientid":"7d7c43db-d061-42cf-9e9f-5c9e36b1dd34","broker":"tcp://10.0.0.27:1883","user_name":"Chindeo","password":"P@ssw0rd","num":50}
 ```
 
 ## msg
@@ -27,5 +26,5 @@ cd udp & go run main.go
 
 ### 编译参数
 ```shell script
-GOOS=linux;GOARCH=arm;GOARM=7;CC=arm-linux-gnueabi-gcc-4.7
+GOOS=linux;GOARCH=arm
 ```
