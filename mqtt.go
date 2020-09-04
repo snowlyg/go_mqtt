@@ -49,7 +49,6 @@ type Msg struct {
 	Type string `json:"type"` //cmd
 	Data struct {
 		Text string `json:"text"` // 执行的shell脚本
-		Arg  string `json:"arg"`  // 执行的shell脚本参数
 	} `json:"data"`
 }
 
@@ -85,13 +84,13 @@ func (c *Client) Start() {
 			switch m.Type {
 			case "cmd": // 执行 cmd
 				logger.Println("cmd start")
-				args := strings.Split(m.Data.Arg, " ")
+				args := strings.Split(m.Data.Text, " ")
 				cmdOptions := cmd.Options{
 					Buffered:  true,
 					Streaming: true,
 				}
 
-				envCmd := cmd.NewCmdOptions(cmdOptions, m.Data.Text, args...)
+				envCmd := cmd.NewCmdOptions(cmdOptions, args[0], args[1:]...)
 				go func() {
 					for envCmd.Stdout != nil || envCmd.Stderr != nil {
 						select {

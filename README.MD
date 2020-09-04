@@ -22,7 +22,7 @@ cd udp & go run main.go
 
 ## msg
 ```json
-{"type":"cmd","data":{"text":"go","arg":"env"}}
+{"type":"cmd","data":{"text":"go env"}}
 ```
 
 ### 编译参数
