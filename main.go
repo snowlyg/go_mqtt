@@ -22,7 +22,6 @@ func init() {
 // 配置
 type Config struct {
 	Qos      uint   `required:"true" default:"2" json:"qos"` //0,1,2
-	ClientID string `required:"true" json:"clientid"`
 	Broker   string `required:"true" default:"tcp://10.0.0.27:1883" json:"broker"`
 	UserName string `required:"true" default:"Chindeo" json:"user_name"`
 	Password string `required:"true" default:"P@ssw0rd" json:"password"`
@@ -158,7 +157,7 @@ func SetConfigFile() error {
 				return err
 			}
 		case "clientid":
-			_, err = write.WriteString(fmt.Sprintf("%s: %s \r\n", key, config.ClientID))
+			_, err = write.WriteString(fmt.Sprintf("%s: %s \r\n", key, macAddr()))
 			if err != nil {
 				return err
 			}

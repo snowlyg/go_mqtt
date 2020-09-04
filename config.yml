@@ -1,5 +1,4 @@
 qos: 2
-clientid: 7d7c43db-d061-42cf-9e9f-5c9e36b1dd34 
 broker: tcp://10.0.0.27:1883 
 user_name: Chindeo 
 password: P@ssw0rd 

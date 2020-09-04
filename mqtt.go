@@ -30,7 +30,7 @@ func NewClient() *Client {
 func (c *Client) NewMqttCleintOptions() {
 	opts := MQTT.NewClientOptions()
 	opts.AddBroker(config.Broker)
-	opts.SetClientID(config.ClientID)
+	opts.SetClientID(macAddr())
 	opts.SetUsername(config.UserName)
 	opts.SetPassword(config.Password)
 	opts.SetCleanSession(true)
@@ -131,7 +131,7 @@ func (c *Client) Stop() {
 func (c *Client) SetOpts() {
 	c.Stop()
 	c.Opts.AddBroker(config.Broker)
-	c.Opts.SetClientID(config.ClientID)
+	c.Opts.SetClientID(macAddr())
 	c.Opts.SetUsername(config.UserName)
 	c.Opts.SetPassword(config.Password)
 	c.Opts.SetCleanSession(false)
