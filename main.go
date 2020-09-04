@@ -21,7 +21,6 @@ func init() {
 
 // 配置
 type Config struct {
-	Topic    string `required:"true" json:"topic"`           // iot/device/{mac地址}/control
 	Qos      uint   `required:"true" default:"2" json:"qos"` //0,1,2
 	ClientID string `required:"true" json:"clientid"`
 	Broker   string `required:"true" default:"tcp://10.0.0.27:1883" json:"broker"`
@@ -148,16 +147,11 @@ func SetConfigFile() error {
 	defer file.Close()
 	write := bufio.NewWriter(file)
 
-	configKeys := []string{"topic", "qos", "clientid", "broker", "user_name", "password", "num"}
+	configKeys := []string{"qos", "clientid", "broker", "user_name", "password", "num"}
 
 	for _, key := range configKeys {
 		logger.Println("%s : %v", key, config)
 		switch key {
-		case "topic":
-			_, err = write.WriteString(fmt.Sprintf("%s: %s \r\n", key, config.Topic))
-			if err != nil {
-				return err
-			}
 		case "qos":
 			_, err = write.WriteString(fmt.Sprintf("%s: %d \r\n", key, config.Qos))
 			if err != nil {
